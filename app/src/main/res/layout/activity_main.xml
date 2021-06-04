@@ -7,15 +7,28 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.StockExchangeApp.AppBarOverlay">
 
+        <TextView
+            android:id="@+id/AppTitle"
+            android:layout_width="357dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:text="Stonks"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            android:visibility="gone"
             app:popupTheme="@style/Theme.StockExchangeApp.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -28,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:backgroundTint="#3F51B5"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
