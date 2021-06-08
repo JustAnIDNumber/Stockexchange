@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link aStock#newInstance} factory method to
@@ -24,6 +26,7 @@ public class aStock extends Fragment {
     private static String symbol;
     private static String change;
     private static String price;
+    private static Date lastUpdated;
 
     public aStock() {
         // Required empty public constructor
@@ -37,6 +40,7 @@ public class aStock extends Fragment {
         args.putString(ARG_PARAM1, symbol);
         args.putString(ARG_PARAM2, change);
         args.putString(ARG_PARAM3, price);
+        lastUpdated = new Date();
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,4 +61,8 @@ public class aStock extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_a_stock, container, false);
     }
+
+    //TODO Method for updating ticker at a specified interval
+
+    //TODO Getters and Setters
 }
