@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.stockexchangeapp.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
+
+
 
     private FragmentFirstBinding binding;
 
