@@ -52,6 +52,7 @@ public class aStock extends Fragment {
             symbol = getArguments().getString(ARG_PARAM1);
             change = getArguments().getString(ARG_PARAM2);
             price = getArguments().getString(ARG_PARAM3);
+
         }
     }
 
