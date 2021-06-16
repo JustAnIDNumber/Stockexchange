@@ -12,17 +12,29 @@ import retrofit2.http.Url;
 
 public interface JsonPlaceHolderApi {
 
-    // API CONSTANTS FOR FETCHING DATA FROM STOCK SERVER //
-    final String BASE_URL = "https://finnhub.io/api/v1/";
-    final String AUTH_TOKEN = "&token=c313r62ad3idae6u7d6g"; //If key ever changes, change this
-    final String SEARCH_TICKER_URL = "search?q=";
 
     //q={ticker}&token=c313r62ad3idae6u7d6g
     //@GET(SEARCH_TICKER_URL+"{ticker}"+AUTH_TOKEN) //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
     //Call<TickerSearch> GetTickerSearch(@Path("{ticker}") String ticker); //this might have to change to a different method name other than getTickerSearch
 
-    //TODO fix this file path to not be static
-    @GET(SEARCH_TICKER_URL+"gamestop"+AUTH_TOKEN) //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
-    Call<TickerSearch> GetTickerSearch(); //this might have to change to a different method name other than getTickerSearch
+
+
+    //TODO fix this file path to not be hardcoded
+    @GET //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
+    Call<TickerSearch> GetTickerSearch(@Url String url); //this might have to change to a different method name other than getTickerSearch
 
 }
+
+/*TODO Implement the following APIS at some point:
+
+Trades - Last Price Updates
+Stock Symbol
+Company Profile 2
+Basic Financials
+Stock Candles
+Quote
+
+Crypto Exchanges
+Crypto Symbol
+Crypto Candles
+*/
