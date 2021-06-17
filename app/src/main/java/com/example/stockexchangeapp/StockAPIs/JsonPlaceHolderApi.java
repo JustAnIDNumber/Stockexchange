@@ -13,14 +13,9 @@ import retrofit2.http.Url;
 public interface JsonPlaceHolderApi {
 
 
-    //q={ticker}&token=c313r62ad3idae6u7d6g
-    //@GET(SEARCH_TICKER_URL+"{ticker}"+AUTH_TOKEN) //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
-    //Call<TickerSearch> GetTickerSearch(@Path("{ticker}") String ticker); //this might have to change to a different method name other than getTickerSearch
 
 
-
-    //TODO fix this file path to not be hardcoded
-    @GET //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
+    @GET() //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
     Call<TickerSearch> GetTickerSearch(@Url String url); //this might have to change to a different method name other than getTickerSearch
 
 }

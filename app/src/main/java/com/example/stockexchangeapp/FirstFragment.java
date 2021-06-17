@@ -33,17 +33,14 @@ public class FirstFragment extends Fragment {
     String searchbartext = "gamestop";
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-                                                                  //This will be the value in the search bar from fragment 1
+        //This will be the value in the search bar from fragment 1
 
-        Retrofit retrofit = new Retrofit.Builder()                                                  //this is the current instance of retrofit2, unknown if we need a new instance for each api call
-                .baseUrl(URLbuilder.getBASE_URL())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                                        .baseUrl(URLbuilder
+                                        .getBASE_URL())
+                                        .addConverterFactory(GsonConverterFactory.create()).build();
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
@@ -58,7 +55,7 @@ public class FirstFragment extends Fragment {
         Context context = this.getContext();
         String url = URLbuilder.GetURL(URLbuilder.REQUEST_TYPE.GetTickerSearch, thesearch);
 
-        Call<TickerSearch> call = jsonPlaceHolderApi.GetTickerSearch(url);                //This calls the class built from the searchticker code in PlaceholderAPi interface
+        Call<TickerSearch> call = jsonPlaceHolderApi.GetTickerSearch(url);                          //This calls the class built from the searchticker code in PlaceholderAPi interface
 
         call.enqueue(new Callback<TickerSearch>() {                                                 //call.enqueue is a retrofit function to handle the asynchronous http call for us (MAGIC)
             @Override

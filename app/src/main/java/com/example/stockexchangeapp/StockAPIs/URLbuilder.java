@@ -4,11 +4,11 @@ public class URLbuilder {
 
     // API CONSTANTS FOR FETCHING DATA FROM STOCK SERVER //
     final static String BASE_URL = "https://finnhub.io/api/v1/";
-    final static String AUTH_TOKEN = "&token=c313r62ad3idae6u7d6g"; //If key ever changes, change this
+    final static String AUTH_TOKEN = "&token=c313r62ad3idae6u7d6g";                                 //If key ever changes, change this
     final static String SEARCH_TICKER_URL = "search?q=";
 
     public enum REQUEST_TYPE{
-        GetTickerSearch, //Search for best-matching symbols based on your query.
+        GetTickerSearch,                                                                            //Search for best-matching symbols based on your query.
         StockSymbol,
         CompanyProfile2,
         BasicFinancials,
@@ -21,6 +21,7 @@ public class URLbuilder {
 
     }
 
+    //TODO the other API calls
     public static String GetURL(REQUEST_TYPE type, String theSearch){
 
         String theURL = "";

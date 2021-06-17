@@ -18,32 +18,87 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 
-
+/****************************************************************************************************
+ TICKERSEARCH
+ Java 8's version of a record. When android catches up to java 14 this should be changed to record
+ ****************************************************************************************************/
 public class TickerSearch {
+
+    /****************************************************************************************************
+        INNER CLASS SearchResult
+        Java 8's version of a record. When android catches up to java 14 this should be changed to record
+    ****************************************************************************************************/
+
+    public class SearchResult {
+        private String description;
+        private String displaySymbol;
+        private String symbol;
+        private String type;
+
+
+        public SearchResult(String description, String displaySymbol, String symbol, String type) {
+            this.description = description;
+            this.displaySymbol = displaySymbol;
+            this.symbol = symbol;
+            this.type = type;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getDisplaySymbol() {
+            return displaySymbol;
+        }
+
+        public void setDisplaySymbol(String displaySymbol) {
+            this.displaySymbol = displaySymbol;
+        }
+
+        public String getSymbol() {
+            return symbol;
+        }
+
+        public void setSymbol(String symbol) {
+            this.symbol = symbol;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+    }
 
     @SerializedName("count")
     private int resultCount; //The number of results we get back
     @SerializedName("result")
-    private List<Result> results;
+    private List<SearchResult> results;
 
-    public TickerSearch(int resultCount, List<Result> results) {
+
+    public TickerSearch(int resultCount, List<SearchResult> results) {
+
         this.resultCount = resultCount;
-        this.results = results;
+        this.results     = results;
     }
 
-    /*
-    public TickerSearch GetTickerSearch(){
-        return this;
-    }
-    */
+
 
     public int getResultCount() {
         return resultCount;
     }
 
-    public List<Result> getResults() {
+    public List<SearchResult> getResults() {
         return results;
     }
 
 
 }
+
