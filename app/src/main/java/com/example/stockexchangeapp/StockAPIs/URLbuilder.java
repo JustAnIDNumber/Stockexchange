@@ -5,6 +5,7 @@ public class URLbuilder {
     // API CONSTANTS FOR FETCHING DATA FROM STOCK SERVER //
     final static String BASE_URL = "https://finnhub.io/api/v1/";
     final static String AUTH_TOKEN = "&token=c313r62ad3idae6u7d6g";                                 //If key ever changes, change this
+
     final static String SEARCH_TICKER_URL = "search?q=";
 
     public enum REQUEST_TYPE{
@@ -27,16 +28,24 @@ public class URLbuilder {
         String theURL = "";
 
         switch (type){
-           case GetTickerSearch:    theURL = theURL + SEARCH_TICKER_URL;
-           break;
-           case StockSymbol:        return "Feature Not added";
-           case CompanyProfile2:    return "Feature Not added";
-           case BasicFinancials:    return "Feature Not added";
-           case StockCandles:       return "Feature Not added";
-           case Quote:              return "Feature Not added";
-           case CryptoExchanges:    return "Feature Not added";
-           case CryptoSymbol:       return "Feature Not added";
-           case CryptoCandles:      return "Feature Not added";
+           case GetTickerSearch: theURL = theURL + SEARCH_TICKER_URL;
+               break;
+           case StockSymbol:
+               break;
+           case CompanyProfile2:
+               break;
+           case BasicFinancials:
+               break;
+           case StockCandles:
+               break;
+           case Quote:
+               break;
+           case CryptoExchanges:
+               break;
+           case CryptoSymbol:
+               break;
+           case CryptoCandles:
+               break;
         }
 
         theURL = theURL + theSearch;
