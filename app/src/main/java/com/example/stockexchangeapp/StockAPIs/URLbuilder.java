@@ -7,8 +7,9 @@ public class URLbuilder {
     final static String AUTH_TOKEN = "&token=c313r62ad3idae6u7d6g";                                 //If key ever changes, change this
 
     final static String SEARCH_TICKER_URL = "search?q=";
+    final static String COMPANY_PROFILE_2 = "stock/profile2?symbol=";
 
-    public enum REQUEST_TYPE{
+        public enum REQUEST_TYPE{
         GetTickerSearch,                                                                            //Search for best-matching symbols based on your query.
         StockSymbol,
         CompanyProfile2,
@@ -32,7 +33,7 @@ public class URLbuilder {
                break;
            case StockSymbol:
                break;
-           case CompanyProfile2:
+           case CompanyProfile2: theURL = theURL + COMPANY_PROFILE_2;
                break;
            case BasicFinancials:
                break;
@@ -50,6 +51,7 @@ public class URLbuilder {
 
         theURL = theURL + theSearch;
         theURL = theURL + AUTH_TOKEN;
+
         return theURL;
 
     }

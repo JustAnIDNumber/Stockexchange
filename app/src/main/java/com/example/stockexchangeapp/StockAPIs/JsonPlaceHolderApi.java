@@ -18,6 +18,8 @@ public interface JsonPlaceHolderApi {
     @GET() //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
     Call<TickerSearch> GetTickerSearch(@Url String url); //this might have to change to a different method name other than getTickerSearch
 
+    @GET()
+    Call<CompanyProfile2> GetCompanyProfile2(@Url String url);
 }
 
 /*TODO Implement the following APIS at some point:

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.stockexchangeapp.StockAPIs.CompanyProfile2;
 import com.example.stockexchangeapp.StockAPIs.JsonPlaceHolderApi;
 import com.example.stockexchangeapp.StockAPIs.TickerSearch;
 import com.example.stockexchangeapp.StockAPIs.URLbuilder;
@@ -78,6 +79,36 @@ public class FirstFragment extends Fragment {
                 public void onFailure(Call<TickerSearch> call, Throwable t) {
                     Toast.makeText(context, "Code: " + t.getMessage(), Toast.LENGTH_LONG);
                 }
+        });
+    }
+    private void GetCompanyProfile2(String thesearch){
+
+        Context context = this.getContext();
+        String url = URLbuilder.GetURL(URLbuilder.REQUEST_TYPE.CompanyProfile2, thesearch);
+
+        Call<CompanyProfile2> call = jsonPlaceHolderApi.GetCompanyProfile2(url);                          //This calls the class built from the searchticker code in PlaceholderAPi interface
+
+        call.enqueue(new Callback<CompanyProfile2>() {                                                 //call.enqueue is a retrofit function to handle the asynchronous http call for us (MAGIC)
+            @Override
+            public void onResponse(Call<CompanyProfile2> call, Response<CompanyProfile2> response) {      //Anonymous function to ensure we have the enqueue response methods
+                if (!response.isSuccessful()) {                                                     //Response can be unsuccessful from the server ex: 404 error codes
+                    Toast.makeText(context, "Code: " + response.code(), Toast.LENGTH_LONG);
+                    return;
+                }
+
+                //TODO Add code if response is good here
+                Toast.makeText(
+                        context,
+                        "Number of results:\n"+
+                                response.body().getName() +
+                                "\nResults:\n"+
+                                response.body().getIpo().toString(), Toast.LENGTH_LONG);
+                return;
+            }
+            @Override
+            public void onFailure(Call<CompanyProfile2> call, Throwable t) {
+                Toast.makeText(context, "Code: " + t.getMessage(), Toast.LENGTH_LONG);
+            }
         });
     }
 
