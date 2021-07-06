@@ -43,6 +43,14 @@ public class TickerSearch {
             this.type = type;
         }
 
+        public List<SearchResult> getResultsList(){
+            return results;
+        }
+
+        public int getResultCount(){
+            return resultCount;
+        }
+
         public String getDescription() {
             return description;
         }

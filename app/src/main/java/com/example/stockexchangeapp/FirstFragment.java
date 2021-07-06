@@ -27,24 +27,14 @@ public class FirstFragment extends Fragment {
 
 
 
-    private JsonPlaceHolderApi jsonPlaceHolderApi;
 
     private FragmentFirstBinding binding;
 
-    //This will be the value in the search bar from fragment 1
-    String searchbartext = "gamestop";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
-
-        Retrofit retrofit = new Retrofit.Builder()
-                                        .baseUrl(URLbuilder
-                                        .getBASE_URL())
-                                        .addConverterFactory(GsonConverterFactory.create()).build();
-
-        jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
 
 
@@ -52,72 +42,11 @@ public class FirstFragment extends Fragment {
         return binding.getRoot();
 
     }
-    private void GetTickerSearch(String thesearch){
 
-        Context context = this.getContext();
-        String url = URLbuilder.GetURL(URLbuilder.REQUEST_TYPE.GetTickerSearch, thesearch);
-
-        Call<TickerSearch> call = jsonPlaceHolderApi.GetTickerSearch(url);                          //This calls the class built from the searchticker code in PlaceholderAPi interface
-
-        call.enqueue(new Callback<TickerSearch>() {                                                 //call.enqueue is a retrofit function to handle the asynchronous http call for us (MAGIC)
-            @Override
-            public void onResponse(Call<TickerSearch> call, Response<TickerSearch> response) {      //Anonymous function to ensure we have the enqueue response methods
-                if (!response.isSuccessful()) {                                                     //Response can be unsuccessful from the server ex: 404 error codes
-                    Toast.makeText(context, "Code: " + response.code(), Toast.LENGTH_LONG);
-                    return;
-                }
-
-                //TODO Add code if response is good here
-                Toast.makeText(
-                                context,
-                            "Number of results:\n"+
-                                response.body().getResultCount() +
-                                "\nResults:\n"+
-                                response.body().getResults().toString(), Toast.LENGTH_LONG);
-                return;
-            }
-                @Override
-                public void onFailure(Call<TickerSearch> call, Throwable t) {
-                    Toast.makeText(context, "Code: " + t.getMessage(), Toast.LENGTH_LONG);
-                }
-        });
-    }
-
-    private void GetCompanyProfile2(String thesearch){
-
-        Context context = this.getContext();
-        String url = URLbuilder.GetURL(URLbuilder.REQUEST_TYPE.CompanyProfile2, thesearch);
-
-        Call<CompanyProfile2> call = jsonPlaceHolderApi.GetCompanyProfile2(url);                          //This calls the class built from the searchticker code in PlaceholderAPi interface
-
-        call.enqueue(new Callback<CompanyProfile2>() {                                                 //call.enqueue is a retrofit function to handle the asynchronous http call for us (MAGIC)
-            @Override
-            public void onResponse(Call<CompanyProfile2> call, Response<CompanyProfile2> response) {      //Anonymous function to ensure we have the enqueue response methods
-                if (!response.isSuccessful()) {                                                     //Response can be unsuccessful from the server ex: 404 error codes
-                    Toast.makeText(context, "Code: " + response.code(), Toast.LENGTH_LONG);
-                    return;
-                }
-
-                //TODO Add code if response is good here
-                Toast.makeText(
-                        context,
-                        "Number of results:\n"+
-                                response.body().getName() +
-                                "\nResults:\n"+
-                                response.body().getIpo().toString(), Toast.LENGTH_LONG);
-                return;
-            }
-            @Override
-            public void onFailure(Call<CompanyProfile2> call, Throwable t) {
-                Toast.makeText(context, "Code: " + t.getMessage(), Toast.LENGTH_LONG);
-            }
-        });
-    }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GetTickerSearch(searchbartext);
 
     }
 
