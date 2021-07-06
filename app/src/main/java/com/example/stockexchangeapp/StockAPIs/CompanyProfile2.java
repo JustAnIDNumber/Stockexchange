@@ -31,9 +31,9 @@ public class CompanyProfile2 {
     String ticker;
     String weburl;
     String logo;
-    Date ipo;
-    int marketCapitalization;
-    int phone;
+    Date   ipo;
+    int    marketCapitalization;
+    int    phone;
     double shareOutstanding;
 
     public CompanyProfile2(

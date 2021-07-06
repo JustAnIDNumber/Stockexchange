@@ -15,7 +15,7 @@ public interface JsonPlaceHolderApi {
 
 
 
-    @GET() //This is the relative URL portion of the get request (i.e What comes after the base URL: search?q=" + aStockName + "&token=" + APIkey)
+    @GET()
     Call<TickerSearch> GetTickerSearch(@Url String url); //this might have to change to a different method name other than getTickerSearch
 
     @GET()
@@ -24,9 +24,9 @@ public interface JsonPlaceHolderApi {
 
 /*TODO Implement the following APIS at some point:
 
-Trades - Last Price Updates
-Stock Symbol
-Company Profile 2
+Trades - Last Price Updates - websocket (might be difficult or require extra files)
+Stock Symbol - DONE
+Company Profile 2 - DONE
 Basic Financials
 Stock Candles
 Quote

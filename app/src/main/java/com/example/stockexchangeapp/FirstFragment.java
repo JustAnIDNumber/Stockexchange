@@ -31,12 +31,13 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
 
+    //This will be the value in the search bar from fragment 1
     String searchbartext = "gamestop";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //This will be the value in the search bar from fragment 1
+
 
         Retrofit retrofit = new Retrofit.Builder()
                                         .baseUrl(URLbuilder
@@ -81,6 +82,7 @@ public class FirstFragment extends Fragment {
                 }
         });
     }
+
     private void GetCompanyProfile2(String thesearch){
 
         Context context = this.getContext();
