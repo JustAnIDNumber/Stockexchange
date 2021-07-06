@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -19,11 +20,17 @@ import com.example.stockexchangeapp.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    private AlertDialog.Builder newStockPopupBuilder;
+    private AlertDialog newStockPopup;
+
+    public SearchView newStockSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        Fragment newStock;
-        newStock = new AddNewStock();
-
 
 
         /* Removed this to fix top bar from being fucked
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadNewStock(newStock);
+                loadNewStock();
             }
         });
     }
@@ -83,11 +86,15 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private void loadNewStock(Fragment theNewStock){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        //frame_container is your layout name in xml file
-        transaction.add(R.id.newStockFrameLayout, theNewStock);
-        transaction.addToBackStack(null);
-        transaction.commit();
+    private void loadNewStock(){
+        newStockPopupBuilder = new AlertDialog.Builder(this);                                // Add support code to create a popup
+        final View newStockPopupView = getLayoutInflater()                                          // Attach the layout to the inflater
+                                       .inflate(R.layout.popup_add_new_stock, null);
+
+        newStockSearchView = (SearchView)newStockPopupView.findViewById(R.id.newStockSearchView);   // link search view to search view variable
+
+        newStockPopupBuilder.setView(newStockPopupView);                                            //link builder to the popup
+        newStockPopup = newStockPopupBuilder.create();                                              //run the builder
+        newStockPopup.show();                                                                       //display the view
     }
 }// Milk duds
