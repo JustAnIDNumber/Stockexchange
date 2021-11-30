@@ -24,6 +24,32 @@ import java.util.List;
  ****************************************************************************************************/
 public class TickerSearch {
 
+
+    @SerializedName("count")
+    private int resultCount; //The number of results we get back
+    @SerializedName("result")
+    private List<SearchResult> results;
+
+    public TickerSearch() {
+
+    }
+    public TickerSearch(int resultCount, List<SearchResult> results) {
+
+        this.resultCount = resultCount;
+        this.results     = results;
+    }
+
+
+
+    public int getResultCount() {
+        return resultCount;
+    }
+
+    public List<SearchResult> getResults() {
+        return results;
+    }
+
+
     /****************************************************************************************************
         INNER CLASS SearchResult
         Java 8's version of a record. When android catches up to java 14 this should be changed to record
@@ -85,27 +111,6 @@ public class TickerSearch {
 
     }
 
-    @SerializedName("count")
-    private int resultCount; //The number of results we get back
-    @SerializedName("result")
-    private List<SearchResult> results;
-
-
-    public TickerSearch(int resultCount, List<SearchResult> results) {
-
-        this.resultCount = resultCount;
-        this.results     = results;
-    }
-
-
-
-    public int getResultCount() {
-        return resultCount;
-    }
-
-    public List<SearchResult> getResults() {
-        return results;
-    }
 
 
 }

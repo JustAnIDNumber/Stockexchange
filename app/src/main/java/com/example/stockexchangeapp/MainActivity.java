@@ -17,6 +17,8 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog newStockPopup;
 
     public SearchView newStockSearchView;
+    public MutableLiveData<TickerSearch> liveTickerSearch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +66,19 @@ public class MainActivity extends AppCompatActivity {
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
+        liveTickerSearch = new MutableLiveData<>();
 
+        liveTickerSearch.setValue(new TickerSearch()); //Initialize with a value
 
+        liveTickerSearch.observe(this,new Observer<TickerSearch>() {
+            @Override
+            public void onChanged(TickerSearch tickerSearch) {
+                if(tickerSearch.getResults() != null)
+                    Log.i("variable changed", tickerSearch.getResults().toString());
+                else
+                    Log.i("variable empty","Live tickerSearch empty");
+            }
+        });
 
 
         /* Removed this to fix top bar from being fucked
@@ -127,8 +142,9 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                //TODO figure out how to get the results list from the async process back onto the main thread :(
-                Log.i("Search Results:",response.body().getResults().toString());
+
+                Log.i("Search Results:","results:"+response.body().getResultCount());
+                liveTickerSearch.setValue(new TickerSearch(response.body().getResultCount(), response.body().getResults()));
                 return;
             }
             @Override
