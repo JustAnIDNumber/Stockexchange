@@ -50,6 +50,10 @@ public class TickerSearch {
     }
 
 
+    public SearchResult getResultAtPosition(int position) { return results.get(position);}
+
+
+
     /****************************************************************************************************
         INNER CLASS SearchResult
         Java 8's version of a record. When android catches up to java 14 this should be changed to record

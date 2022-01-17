@@ -23,6 +23,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stockexchangeapp.databinding.ActivityMainBinding;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AlertDialog.Builder newStockPopupBuilder;
     private AlertDialog newStockPopup;
+    private RecyclerView newStockRecyclerView;
 
     public SearchView newStockSearchView;
     public MutableLiveData<TickerSearch> liveTickerSearch;
@@ -125,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    private void setRecyclerAdaptor(){
+
     }
 
     private void GetTickerSearch(String thesearch){
